@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polynômes degré 3 & Fonctions cubiques - Bac Pro 2026</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {font-family:"Trebuchet MS", Arial, sans-serif; background:linear-gradient(135deg,#667eea,#764ba2); margin:0; padding:20px; color:#333;}
+        .container {max-width:1100px; margin:auto; background:white; padding:40px; border-radius:30px; box-shadow:0 25px 60px rgba(0,0,0,0.3);}
+        h1 {text-align:center; color:#e91e63; font-size:3.8em; margin:10px; text-shadow:3px 3px 10px rgba(0,0,0,0.3);}
+        h2 {background:#3f51b5; color:white; padding:20px; border-radius:25px; text-align:center; font-size:2.2em; margin:70px 0 40px 0;}
+        .def {background:#e3f2fd; padding:35px; border-left:15px solid #1976d2; border-radius:20px; margin:40px 0; font-size:1.4em;}
+        .important {background:#fff8e1; padding:40px; border-radius:30px; font-size:1.9em; margin:50px 0; border:6px solid #ffb300; text-align:center; box-shadow:0 12px 25px rgba(0,0,0,0.2);}
+        .exemple {background:#e8f5e9; padding:40px; border-left:20px solid #43a047; border-radius:25px; margin:60px 0;}
+        .piege {background:#ffebee; padding:35px; border-left:15px solid #e53935; border-radius:20px; margin:40px 0;}
+        .methode {background:#f3e5f5; padding:35px; border-left:12px solid #9c27b0; border-radius:20px; margin:50px 0;}
+        table {width:100%; border-collapse:collapse; margin:50px 0; font-size:1.8em; box-shadow:0 10px 20px rgba(0,0,0,0.1);}
+        th {background:#1a237e; color:white; padding:20px;}
+        td {border:4px solid #555; padding:18px; text-align:center;}
+        .plus {background:#c8e6c9 !important; color:#1b5e20;}
+        .moins {background:#ffcdd2 !important; color:#c62828;}
+        .zero {background:#fff176 !important; font-weight:bold; color:#212121;}
+        .fleche {font-size:4em; color:#2e7d32;}
+        .desmos {height:550px; border:12px solid #ff5722; border-radius:30px; margin:70px 0; background:white; box-shadow:0 15px 40px rgba(0,0,0,0.3);}
+        .bouton {background:#ff4081; color:white; padding:30px; font-size:2.2em; border-radius:60px; text-align:center; margin:40px auto; max-width:90%; box-shadow:0 12px 30px rgba(0,0,0,0.4); font-weight:bold;}
+        .smiley {font-size:2.5em;}
+        .exo {background:#e0f7fa; padding:40px; border-radius:25px; margin:60px 0; border:5px dashed #00bcd4;}
+        .correction {background:#f1f8e9; padding:30px; border-radius:20px; margin-top:20px; display:none;}
+        button {background:#4caf50; color:white; border:none; padding:15px 30px; font-size:1.3em; border-radius:50px; cursor:pointer; margin-top:20px;}
+        button:hover {background:#388e3c;}
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>FONCTIONS POLYNÔMES DEGRÉ 3</h1>
+<p style="text-align:center; font-size:2.5em; color:#1976d2; margin:20px;">
+    Tout le programme officiel Terminale Bac Pro (MELEC)<br>
+</p>
+
+<!-- ====================== INTRODUCTION ====================== -->
+<h2>1. Rappel : Qu’est-ce qu’un polynôme de degré 3 ?</h2>
+<div class="def">
+    <strong>Définition :</strong><br><br>
+    Une fonction polynôme de degré ≤ 3 s’écrit sous la forme :<br>
+    <strong style="font-size:2.2em; color:#d81b60;">\( f(x) = ax^3 + bx^2 + cx + d \)</strong><br><br>
+    • \(a, b, c, d \in \mathbb{R}\)<br>
+    • Si \(a \neq 0\) → degré 3 → fonction <strong>cubique</strong><br>
+    • Si \(a = 0\) → degré ≤ 2 (parabole ou droite)
+</div>
+
+<!-- ====================== FONCTION CUBE PURE ====================== -->
+<h2>2. La fonction cube : \( y = x^3 \) (la base de tout !)</h2>
+
+<div class="important">
+    Propriétés à connaître PAR CŒUR pour le bac pro
+</div>
+
+<div class="exemple">
+    <strong>1. Dérivée</strong> : \( f'(x) = 3x^2 \)<br>
+    <strong>2. Signe de la dérivée</strong> : \( 3x^2 \geq 0 \) et = 0 seulement en x = 0<br>
+    → la fonction est <strong>strictement croissante</strong> sur \(\mathbb{R}\)<br><br>
+    <strong>3. Conséquence majeure :</strong><br>
+    Pour tout k, l’équation \( x^3 = k \) a <strong>exactement une seule solution réelle</strong>
+</div>
+
+<table>
+    <tr><th>x</th><th>\(-∞\)</th><th>0</th><th>\(+∞\)</th></tr>
+    <tr><td>\(f'(x)\)</td><td class="plus">+</td><td class="zero">0</td><td class="plus">+</td></tr>
+    <tr><td>\(f(x)\)</td><td class="fleche">↗</td><td>point d'inflexion</td><td class="fleche">↗</td></tr>
+</table>
+
+<div class="desmos" id="cube"></div>
+
+<!-- ====================== RÈGLES DE DÉRIVATION ====================== -->
+<h2>3. Les 4 règles de dérivation à connaître ABSOLUMENT</h2>
+<div class="methode">
+    <strong>Tableau officiel du bac pro :</strong><br><br>
+    <table style="font-size:1.6em;">
+        <tr><th>Fonction</th><th>Dérivée</th></tr>
+        <tr><td>\( k \)</td><td>\( 0 \)</td></tr>
+        <tr><td>\( cx \)</td><td>\( c \)</td></tr>
+        <tr><td>\( bx^2 \)</td><td>\( 2bx \)</td></tr>
+        <tr><td>\( ax^3 \)</td><td>\( 3ax^2 \)</td></tr>
+    </table>
+</div>
+
+<!-- ====================== TABLEAU DE VARIATION MÉTHODE ====================== -->
+<h2>4. Méthode officielle en 6 étapes pour le tableau de variation</h2>
+<div class="important">
+    MÉTHODE À APPLIQUER À TOUS LES EXERCICES DU BAC PRO
+</div>
+<div class="methode">
+    1. Calculer \( f'(x) \)<br>
+    2. Résoudre \( f'(x) = 0 \)<br>
+    3. Factoriser \( f'(x) \) si possible<br>
+    4. Étudier le signe de chaque facteur → tableau des signes<br>
+    5. En déduire le signe de \( f'(x) \)<br>
+    6. Tracer les flèches de variation et repérer max/min
+</div>
+
+<!-- ====================== EXEMPLES COMPLÈTEMENT CORRIGÉS ====================== -->
+<h2>5. 4 exemples types du bac pro (corrigés détaillés)</h2>
+
+<div class="exo">
+    <strong>Exemple 1 – Le plus classique</strong><br>
+    \( f(x) = x^3 - 3x + 1 \)<br>
+    <button onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Voir la correction détaillée</button>
+    <div class="correction">
+        \( f'(x) = 3x^2 - 3 = 3(x^2 - 1) = 3(x-1)(x+1) \)<br>
+        Zéros : x = -1 et x = 1<br><br>
+        <table>
+            <tr><th>x</th><th>-∞</th><th>-1</th><th>1</th><th>+∞</th></tr>
+            <tr><td>x+1</td><td class="moins">-</td><td>0</td><td class="plus">+</td><td class="plus">+</td></tr>
+            <tr><td>x-1</td><td class="moins">-</td><td class="moins">-</td><td>0</td><td class="plus">+</td></tr>
+            <tr><td>f'(x)</td><td class="plus">+</td><td>0</td><td class="moins">-</td><td class="plus">+</td></tr>
+            <tr><td>f(x)</td><td class="fleche">↗</td><td>Max f(-1)=3</td><td>Min f(1)=-1</td><td class="fleche">↗</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="desmos" id="ex1"></div>
+
+<div class="exo">
+    <strong>Exemple 2 – Coefficient non 1 devant x³</strong><br>
+    \( g(x) = -2x^3 + 12x \)<br>
+    <button onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Correction</button>
+    <div class="correction">
+        \( g'(x) = -6x^2 + 12 = -6(x^2 - 2) \)<br>
+        x = -√2 et x = √2<br>
+        → Maximum en x = -√2, minimum en x = √2<br>
+        La courbe descend globalement (car -2x³ → -∞ quand x → +∞)
+    </div>
+</div>
+
+<!-- ====================== NOMBRE DE SOLUTIONS ====================== -->
+<h2>6. Combien de solutions à f(x) = k ? (Question star du bac)</h2>
+<div class="important" style="font-size:2.4em;">
+    RÈGLE OFFICIELLE À RETENIR
+</div>
+
+<table style="font-size:1.9em;">
+    <tr style="background:#1a237e; color:white;">
+        <th>Allure de la courbe</th>
+        <th>Coefficient de x³</th>
+        <th>Nombre d'extremums</th>
+        <th>Nombre de solutions f(x)=k</th>
+    </tr>
+    <tr>
+        <td>Monte toujours</td>
+        <td>a > 0</td>
+        <td>0</td>
+        <td><strong>Toujours 1</strong></td>
+    </tr>
+    <tr>
+        <td>Descend toujours</td>
+        <td>a < 0</td>
+        <td>0</td>
+        <td><strong>Toujours 1</strong></td>
+    </tr>
+    <tr>
+        <td>1 bosse + 1 creux</td>
+        <td>a > 0 ou a < 0</td>
+        <td>2</td>
+        <td><strong>1 ou 3</strong></td>
+    </tr>
+</table>
+
+<div class="desmos" id="solutions"></div>
+
+<!-- ====================== POINT D'INFLÉXION ====================== -->
+<h2>7. Point d’inflexion (souvent demandé)</h2>
+<div class="piege">
+    En x = 0 pour toutes les fonctions du type \( ax^3 + bx^2 + cx + d \)<br>
+    Car \( f''(x) = 6ax + 2b \), donc \( f''(0) = 2b \)<br>
+    Mais le point d’inflexion est toujours en x = -\frac{b}{3a} (milieu des deux extremums quand ils existent)
+</div>
+
+<!-- ====================== EXERCICE BAC BLANC ====================== -->
+<h2>8. Exercice type bac pro 2025-2026 (corrigé)</h2>
+<div class="exo">
+    Soit la fonction \( f(x) = x^3 - 6x^2 + 9x - 2 \)<br><br>
+    1. Montrer que f est dérivable sur ℝ et calculer f'(x)<br>
+    2. Résoudre f'(x) = 0<br>
+    3. Dresser le tableau de variation de f<br>
+    4. Étudier le nombre de solutions de f(x) = 5<br><br>
+    <button onclick="this.nextElementSibling.style.display='block';this.style.display='none'">Voir le corrigé complet</button>
+    <div class="correction">
+        1. f'(x) = 3x² - 12x + 9 = 3(x² - 4x + 3) = 3(x-1)(x-3)<br>
+        2. x = 1 et x = 3<br>
+        3. Tableau :<br>
+           x | -∞ | 1 | 3 | +∞<br>
+           f'(x) | + | 0 | - | +<br>
+           f(x) | ↗ | max f(1)=4 | min f(3)= -11 | ↗<br>
+        4. f(1)=4 < 5 et f → +∞ donc au moins une solution à droite de 1<br>
+           f(3)=-11 < 5 et f → +∞ donc une autre à droite de 3<br>
+           → exactement 2 solutions (car 5 > max local)
+    </div>
+</div>
+
+<!-- ====================== RÉSUMÉ FINAL ====================== -->
+<h2>RÉSUMÉ À PHOTOGRAPHIER</h2>
+<div class="bouton">Si a > 0 et pas de bosse → TOUJOURS 1 SOLUTION</div>
+<div class="bouton">Si la courbe fait un "dos d’âne" → 1 ou 3 SOLUTIONS</div>
+<div class="bouton">Maximum = f' change de + à –</div>
+<div class="bouton">Minimum = f' change de – à +</div>
+<div class="bouton">Point d’inflexion ≈ milieu des deux extremums</div>
+
+<p style="text-align:center; font-size:4em; color:#e91e63; margin:100px 0;">
+    TU ES PRÊT À DÉFONCER LE BAC PRO !<br>
+    <span class="smiley">🚀💪🎉</span>
+</p>
+
+</div>
+
+<script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+    // Cube
+    const g1 = Desmos.GraphingCalculator(document.getElementById('cube'), {expressionsCollapsed:true});
+    g1.setExpression({latex:'y=x^3', color:'#e91e63', linewidth:8});
+
+    // Exemple 1
+    const g2 = Desmos.GraphingCalculator(document.getElementById('ex1'));
+    g2.setExpression({latex:'y=x^3-3x+1', color:'#2196f3', linewidth:8});
+    g2.setExpression({latex:'(-1,3)', color:'#4caf50'});
+    g2.setExpression({latex:'(1,-1)', color:'#f44336'});
+
+    // Comparaison solutions
+    const g3 = Desmos.GraphingCalculator(document.getElementById('solutions'));
+    g3.setExpression({latex:'y=x^3', color:'#4caf50'});
+    g3.setExpression({latex:'y=x^3-3x', color:'#e91e63'});
+    g3.setExpression({latex:'y=2', color:'#ff9800'});
+    g3.setExpression({latex:'y=-4', color:'#ff9800'});
+</script>
+
+</body>
+</html>
